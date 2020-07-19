@@ -1,11 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>zender</title>
-</head>
-<body>
-    
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/zrender@4.3.0/dist/zrender.js"></script>
+  </head>
+  <body>
+    <div id="container" style="width: 800px; height: 800px;"></div>
+    <script>
+      //初始化zrender对象
+      const zr = zrender.init(document.getElementById("container"));
+      //实例化一个正方形
+      const zheng = new zrender.Rect({
+        //设置尺寸
+        shape: {
+          x: 0,
+          y: 0,
+          width: 50,
+          height: 50,
+        },
+        //样式
+        style: {
+          fill: "red", //填充颜色
+          lineWidth: 0, //线条宽度
+        },
+      });
+      //zrender线段
+      const line = new zrender.Polyline({
+        shape: {
+          points: [
+            [200, 200],
+            [350, 100],
+            [500, 300],
+          ],
+        },
+        style: {
+          lineWidth: 1,
+          stroke: "yellow", //线条绘制颜色
+        },
+      });
+      zr.add(line);
+      zr.add(zheng);
+    </script>
+  </body>
 </html>
