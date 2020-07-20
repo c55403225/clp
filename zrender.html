@@ -26,6 +26,7 @@
           lineWidth: 0, //线条宽度
         },
       });
+
       //zrender线段
       const line = new zrender.Polyline({
         shape: {
@@ -40,6 +41,34 @@
           stroke: "yellow", //线条绘制颜色
         },
       });
+      //绘制圆
+      const circle = new zrender.Circle({
+        shape: {
+          cx: 600,
+          cy: 600,
+          r: 50,
+        },
+        style: {
+          lineWidth: 2,
+          fill: "red",
+          stroke: "skyblue",
+        },
+      });
+      //绘制点
+      const poipnt = new zrender.Polyline({
+        shape: {
+          points: [
+            [300, 300],
+            [301, 301],
+          ],
+        },
+        style: {
+          lineWidth: 1,
+          stroke: "red",
+        },
+      });
+      zr.add(poipnt);
+      zr.add(circle);
       zr.add(line);
       zr.add(zheng);
     </script>
