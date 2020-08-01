@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>G6-矢量图</title>
+    <script src="https://gw.alipayobjects.com/os/antv/pkg/_antv.g6-3.4.7/dist/g6.min.js"></script>
+    <!-- <script src="https://gw.alipayobjects.com/os/antv/pkg/_antv.g6-3.1.0/build/g6.js"></script> -->
+  </head>
+  <body>
+    <div id="g6-chear"></div>
+    <script>
+      const data = {
+        // 点集
+        nodes: [
+          {
+            id: "node1", // String，该节点存在则必须，节点的唯一标识
+            x: 100, // Number，可选，节点位置的 x 值
+            y: 200, // Number，可选，节点位置的 y 值
+            size: 60,
+            labelCfg: {
+              position: "center",
+              style: {
+                fontSize: 16,
+                fill: "yellow",
+              },
+            },
+            style: {
+              fill: "#ccc",
+              LineWidth: 1,
+              stroke: "skyblue",
+            },
+            label: "起始点",
+          },
+          {
+            id: "node2", // String，该节点存在则必须，节点的唯一标识
+            x: 300, // Number，可选，节点位置的 x 值
+            y: 200, // Number，可选，节点位置的 y 值
+            size: 100,
+            label: "第二个点",
+            labelCfg: {
+              position: "center",
+              style: {
+                fontSize: 16,
+                fill: "red",
+              },
+            },
+            style: {
+              fill: "#eee",
+              LineWidth: 1,
+              stroke: "blue",
+            },
+            label: "起始点",
+          },
+
+          {
+            id: "node3", // String，该节点存在则必须，节点的唯一标识
+            x: 500, // Number，可选，节点位置的 x 值
+            y: 300, // Number，可选，节点位置的 y 值
+            size: 150,
+            label: "第三个点",
+            labelCfg: {
+              position: "center",
+              style: {
+                fontSize: 16,
+                fill: "#09f",
+              },
+            },
+            style: {
+              fill: "#85f",
+              LineWidth: 1,
+              stroke: "#07f",
+            },
+            label: "起始点",
+          },
+          {
+            id: "node4", // String，该节点存在则必须，节点的唯一标识
+            x: 200, // Number，可选，节点位置的 x 值
+            y: 400, // Number，可选，节点位置的 y 值
+            size: 80,
+            label: "第四个点",
+          },
+        ],
+        // 边集
+        edges: [
+          {
+            source: "node1", // String，必须，起始点 id
+            target: "node2", // String，必须，目标点 id
+          },
+          {
+            source: "node2", // String，必须，起始点 id
+            target: "node3", // String，必须，目标点 id
+          },
+          {
+            source: "node1", // String，必须，起始点 id
+            target: "node4", // String，必须，目标点 id
+          },
+        ],
+      };
+      const graph = new G6.Graph({
+        container: "g6-chear", // String | HTMLElement，必须，在 Step 1 中创建的容器 id 或容器本身
+        width: 800, // Number，必须，图的宽度
+        height: 500, // Number，必须，图的高度
+      });
+      graph.data(data); // 读取 Step 2 中的数据源到图上
+      graph.render();
+    </script>
+  </body>
+</html>
