@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Echar</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@4.7.0/dist/echarts.js"></script>
+    <style>
+      #chert {
+        width: 800px;
+        height: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="chert"></div>
+    <script>
+      const chert = document.getElementById("chert");
+      var myChart = echarts.init(chert);
+      var option = {
+        title: {
+          text: "ECharts 入门示例",
+        },
+        tooltip: {},
+        legend: {
+          data: ["销量"],
+        },
+        //X轴
+        xAxis: {
+          data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"],
+        },
+        //Y轴
+        yAxis: {},
+        //数据和图标类型
+        series: [
+          {
+            name: "销量",
+            type: "bar", //bar代表柱状图
+            data: [5, 20, 36, 10, 10, 20],
+          },
+        ],
+      };
+      myChart.setOption(option);
+    </script>
+  </body>
+</html>
