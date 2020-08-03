@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/echarts@4.7.0/dist/echarts.js"></script>
+    <title>Echaer的Dateset属性</title>
+    <style>
+      #eChers {
+        width: 1200px;
+        height: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="eChers"></div>
+    <script>
+      const chartDom = document.getElementById("eChers");
+      var myChars = echarts.init(chartDom);
+      myChars.setOption({
+        dataset: {
+          source: [
+            ["第一季度", 50, 150, "分类一", 35],
+            ["第二季度", 70, 170, "分类二", 55],
+            ["第三季度", 90, 190, "分类三", 45],
+            ["第四季度", 120, 220, "分类四", 65],
+          ],
+        },
+        title: {
+          text: "Echer多系列案例",
+        },
+        xAxis: {
+          data: ["第一季度", "第二季度", "第三季度", "第四季度"],
+        },
+        yAxis: {},
+        series: [
+          {
+            type: "pie",
+            center: ["60%", 50],
+            radius: 50,
+            encode: { itemName: 3, value: 4 },
+            // data: [
+            //   { name: "分类一", value: 35 },
+            //   { name: "分类二", value: 55 },
+            //   { name: "分类三", value: 45 },
+            //   { name: "分类四", value: 65 },
+            // ],
+          },
+          {
+            type: "bar",
+            // data: [50, 70, 90, 120],
+            encode: { x: 0, y: 1 },
+          },
+          {
+            type: "line",
+            // data: [150, 170, 190, 220],
+            encode: { x: 0, y: 2 },
+          },
+        ],
+      });
+    </script>
+  </body>
+</html>

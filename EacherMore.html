@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Echar</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@4.7.0/dist/echarts.js"></script>
+    <style>
+      #chert {
+        width: 800px;
+        height: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="chert"></div>
+    <script>
+      const chert = document.getElementById("chert");
+      var myChart = echarts.init(chert, "westeros", { renderer: "svg" }); //第一个参数是初始化对象,第二个参数是主题名称,第三个参数是svg格式(canvas/svg)
+      var option = {
+        title: {
+          text: "ECharts 多系列示例",
+        },
+        tooltip: {},
+        legend: {
+          data: ["季度"],
+        },
+        //X轴
+        xAxis: {
+          data: ["第一季度", "第二季度", "第三季度", "第四季度"],
+        },
+        //Y轴
+        yAxis: {},
+        //数据和图标类型
+        series: [
+          {
+            name: "季度",
+            type: "bar", //bar代表柱状图
+            data: [5, 20, 36, 10, 10, 20],
+          },
+          {
+            name: "季度",
+            type: "pie", //bar代表柱状图
+            center: ["70%", 60],
+            radius: 50,
+            data: [
+              {
+                name: "分类一",
+                value: 35,
+              },
+              {
+                name: "分类二",
+                value: 75,
+              },
+              {
+                name: "分类三",
+                value: 50,
+              },
+              {
+                name: "分类四",
+                value: 48,
+              },
+            ],
+          },
+          {
+            name: "季度",
+            type: "line", //bar代表柱状图
+            data: [15, 30, 46, 20, 30, 40],
+          },
+        ],
+      };
+      myChart.setOption(option);
+    </script>
+  </body>
+</html>
