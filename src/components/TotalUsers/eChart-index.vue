@@ -5,7 +5,7 @@
       value='1,087,520'
     >
     <template>
-      <v-chart :options='getOptions()'/>
+      <div id="charts-total" :style="{width:'100%',height:'100%'}"></div>
     </template>
      <template
     v-slot:footer
@@ -27,9 +27,10 @@
 import commonCardMixins from './../mixins/commonCardMixins'
 export default {
  mixins:[commonCardMixins],
- methods:{
-   getOptions(){
-     return {
+ mounted(){
+   const chart = document.getElementById('charts-total');
+   var myChart = this.$echarts.init(chart);
+   myChart.setOption({
      grid:{
        top:0,
        bottom:0,
@@ -107,8 +108,7 @@ export default {
          }
        }
        ]
-   }
-   }
+   })
  }
 };
 </script>

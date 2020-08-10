@@ -6,7 +6,7 @@
       value='81,014'
     >
       <template>
-        <v-chart :options='getOptions()'/>
+        <div id="chart-users" :style="{width:'100%',height:'100%'}"></div>
       </template>
         <template
     v-slot:footer
@@ -23,9 +23,10 @@
 import commonCardMixins from './../mixins/commonCardMixins'
 export default {
  mixins:[commonCardMixins],
-    methods:{
-      getOptions(){
-        return {
+ mounted(){
+   const chart = document.getElementById('chart-users');
+   var myChart = this.$echarts.init(chart);
+   myChart.setOption({
      color:'#3398DB',
      series:[{
        type:'bar',
@@ -47,9 +48,8 @@ export default {
        left:0,
        right:0
      }
-   }
-      }
-    }
+   })
+ }
 };
 </script>
 

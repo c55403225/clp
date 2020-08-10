@@ -6,8 +6,7 @@
       value='￥3,800,85'
     >
     <template>
-      <v-chart :options='getOptions()'/>
-      
+      <div id="total-orders-chart" :style="{width:'100%',height:'100%'}"></div>
     </template>
      <template
     v-slot:footer
@@ -23,9 +22,10 @@
 import commonCardMixins from './../mixins/commonCardMixins'
 export default {
  mixins:[commonCardMixins],
-    methods:{
-      getOptions(){
-        return {
+ mounted(){
+   const chart = document.getElementById('total-orders-chart');
+   var myChart = this.$echarts.init(chart);
+   myChart.setOption({
      xAxis:{
        type:'category',
        show:false,
@@ -61,9 +61,8 @@ export default {
          left:0,
          right:0
        }
-   }
-      }
-    }
+   })
+ }
 };
 </script>
 
