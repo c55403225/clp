@@ -42,14 +42,15 @@
       </template>
       <template>
         <div class="seles-view-chart-wraaper">
-          <v-chart :options='chartOptions'/>
+          <v-chart :options="chartOptions" />
           <div class="seles-view-list-weappre">
-            <div class="seles-view-title">排行榜</div>
+            <div class="seles-view-title">排行榜
             <div class="list-item-weapper">
               <div class="list" v-for='item in Daker' :key='item.number'>
                 <div  :class="['list-item-number',+ item.number < 4 ?'top-number' : '']">{{item.number}}</div>
                 <div class="list-item-name">{{item.name}}</div>
                 <div class="list-item-money">{{item.money}}</div>
+            </div>
             </div>
             </div>
           </div>
@@ -72,19 +73,59 @@ export default {
             textStyle:{
               fontSize:12,
               color:'#666'
-            }
+            },
+            left:25,
+            top:20
           },
           xAxis:{
             type:'category',
-            data:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+            data:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+            axisTick:{
+              alignWithLabel:true,//去除X轴小竖线
+              lineStyle:{
+                color:'#999'
+              },
+              axisLine:{
+                lineStyle:{
+                  color:'#999'
+                },
+                axisLabel:{
+                  color:'#333'
+                }
+              }
+            },
           },
-          yAxis:{},
+          yAxis:{
+            //隐藏纵坐标
+            axisLine:{
+              show:false
+            },
+            // 隐藏纵坐标开头小竖线
+            axisTick:{
+              show:false
+            },
+            //将X轴变成虚线
+            splitLine:{
+              lineStyle:{
+                type:'dotted',
+                color:'#eee'
+              }
+            }
+          },
           series:[{
             type:'bar',
             barWidth:'35%',
             data:[200,250,300,350,300,250,300,250,300,350,300,250]
-          }]
+          }],
+           color:['#3398DB'],
+           grid:{
+             top:70,
+             left:60,
+             right:60,
+             bottom:50
+           }
         },
+       
         Daker:[
           {number:1,name:'肯德基',money:'323,234'},
           {number:2,name:'麦当劳',money:'299,132'},
@@ -162,10 +203,12 @@ export default {
     }
     .seles-view-chart-wraaper{
       display: flex;
+      height: 270px;
       .echarts{
-        flex: 0 0 0 70%;
+        flex: 0 0 70%;
         width: 70%;
         height: 100%;
+        // background: chocolate; 
       }
       .seles-view-list-weappre{
         flex:1;
