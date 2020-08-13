@@ -68,7 +68,9 @@
             </div>
           </template>
           <template>
-            <v-chart :options='categoryOptions'/>
+            <div class="chart-weapper">
+              <v-chart :options='categoryOptions'/>
+            </div>
           </template>
       </el-card>
     </div>
@@ -129,8 +131,132 @@ export default {
   methods:{
     onPageChange(page){
       console.log('点击'+page)
-    }
+    },
+    renderPieChart(){
+      const mokeData = [
+        {
+          legendname:'大盘鸡',
+          value:67,
+          percent:'15.40',
+          itemStyle:{
+            color:'#8d7fec'
+          },
+          // name:'大盘鸡 | 15.40'
+        },
+        {
+          legendname:'丁丁炒面',
+          value:97,
+          percent:'22.30',
+          itemStyle:{
+            color:'#5085f2'
+          },
+          // name:'丁丁炒面 | 22.30'
+        },
+        {
+          legendname:'过油肉拌面',
+          value:92,
+          percent:'21.15',
+          itemStyle:{
+            color:'#e7e702'
+          },
+          // name:'过油肉拌面 | 21.15'
+        },
+        {
+          legendname:'烤全羊',
+          value:100,
+          percent:'25.5',
+          itemStyle:{
+            color:'#e505e4'
+          },
+          //  name:'烤全羊 | 25.5'
+        }
+      ]
+      this.categoryOptions = {
+        title:[
+           {
+             text:'品类分布',
+             textStyle:{
+               fontSize:14,
+               color:'#666'
+             },
+             left:20,
+             top:20 
+           },
+           {
+             text:'累计订单量',
+             subtext:'320 ',
+             x:'34.5%',
+             y:'47.5%',
+             textStyle:{
+               color:'#999',
+               fontSize:14
+             },
+             subtextStyle:{
+                fontSize:28,
+                color:'#333'
+             },
+             textAlign:'center'
+           }
+        ],
+        series:[{
+          name:'品类分布',
+          type:'pie',
+          data:mokeData,
+          label:{
+            normal:{
+              show:true,
+              position:'outter',//标题显示内外(inner是在内部显示)
+              formatter:function(params){
+                  // console.log(params)
+                  return params.data.legendname
+              }
+            }
+          },
+          center:['35%','50%'],
+          radius:['45%','60%'],
+          labelLine:{
+            normal:{
+              length:5,
+              length2:3,
+              smooth:true
+            }
+          },
+           //是否按照顺时针排列
+           clockwise:false,
+          itemStyle:{
+            borderWidth:4,
+            borderColor:'#fff'
+          }
+        }],
+        legend:{
+            //可以滑动
+            type:'scroll',
+            //垂直分布
+            orient:'verticcal',
+            height:250,
+            left:'70%',
+            top:'middle',
+            textStyle:{
+              color:'#8c8c8c'
+            }
+        },
+        //提示信息定制
+        tooltip:{
+          trigger:'item',
+          formatter:function(params){
+            console.log(params)
+            const str = params.seriesName + '<br />' + params.marker  + '' + params.data.legendname + '<br />' + '数量: ' + params.data.value + '<br />' + '占比: ' + params.data.percent + '%';
+            return str 
+          }
+        }
+      }
+    },
+    
+  },
+   mounted(){
+    this.renderPieChart()
   }
+ 
 };
 </script>
 
