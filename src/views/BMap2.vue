@@ -1,12 +1,15 @@
 <template>
-   <v-chart
-    :options='options'
-   />
+  <ve-bmap 
+  :settings='chartSettings'
+  :title='title'
+  :tooltip='{}'
+  :series='chartSeries'
+  height='100%'
+  />
 </template>
 
 <script>
-import 'echarts/extension/bmap/bmap'
-      const data = [
+       const data = [
             { name: '海门', value: 9 },
             { name: '鄂尔多斯', value: 12 },
             { name: '招远', value: 12 },
@@ -405,129 +408,125 @@ import 'echarts/extension/bmap/bmap'
             });
          return res
     }
-    // console.log(converData(data))
 export default {
     data(){
         return{
-            options:{}
-        }
-    },
-    mounted(){
-        this.options={
-            title:{
+             title:{
                 text:'外卖销售数据大盘',
                 subtext:'销售趋势统计',
                 sublink:'http://www.baidu.com',
                 left:'center' 
+                 },
+            chartSettings:{
+                 bmap:{
+                    key:'BTDFGi2hsmy4jkytvgXipySR2RQAnYfW',
+                    center:[104.114129,37.550339],
+                    zoom:5,//缩放比
+                    roam:false,//是否允许交互
+                    //百度地图样式配置
+                    mapStyle: {
+                            styleJson: [{
+                            'featureType': 'water',
+                            'elementType': 'all',
+                            'stylers': {
+                                'color': '#d1d1d1'
+                            }
+                            }, {
+                            'featureType': 'land',
+                            'elementType': 'all',
+                            'stylers': {
+                                'color': '#f3f3f3'
+                            }
+                            }, {
+                            'featureType': 'railway',
+                            'elementType': 'all',
+                            'stylers': {
+                                'visibility': 'off'
+                            }
+                            }, {
+                            'featureType': 'highway',
+                            'elementType': 'all',
+                            'stylers': {
+                                'color': '#fdfdfd'
+                            }
+                            }, {
+                            'featureType': 'highway',
+                            'elementType': 'labels',
+                            'stylers': {
+                                'visibility': 'off'
+                            }
+                            }, {
+                            'featureType': 'arterial',
+                            'elementType': 'geometry',
+                            'stylers': {
+                                'color': '#fefefe'
+                            }
+                            }, {
+                            'featureType': 'arterial',
+                            'elementType': 'geometry.fill',
+                            'stylers': {
+                                'color': '#fefefe'
+                            }
+                            }, {
+                            'featureType': 'poi',
+                            'elementType': 'all',
+                            'stylers': {
+                                'visibility': 'off'
+                            }
+                            }, {
+                            'featureType': 'green',
+                            'elementType': 'all',
+                            'stylers': {
+                                'visibility': 'off'
+                            }
+                            }, {
+                            'featureType': 'subway',
+                            'elementType': 'all',
+                            'stylers': {
+                                'visibility': 'off'
+                            }
+                            }, {
+                            'featureType': 'manmade',
+                            'elementType': 'all',
+                            'stylers': {
+                                'color': '#d1d1d1'
+                            }
+                            }, {
+                            'featureType': 'local',
+                            'elementType': 'all',
+                            'stylers': {
+                                'color': '#d1d1d1'
+                            }
+                            }, {
+                            'featureType': 'arterial',
+                            'elementType': 'labels',
+                            'stylers': {
+                                'visibility': 'off'
+                            }
+                            }, {
+                            'featureType': 'boundary',
+                            'elementType': 'all',
+                            'stylers': {
+                                'color': '#fefefe'
+                            }
+                            }, {
+                            'featureType': 'building',
+                            'elementType': 'all',
+                            'stylers': {
+                                'color': '#d1d1d1'
+                            }
+                            }, {
+                            'featureType': 'label',
+                            'elementType': 'labels.text.fill',
+                            'stylers': {
+                                'color': '#999999'
+                            }
+                         }
+                    ]
+                 }
+            }
             },
-            bmap:{
-                key:'BTDFGi2hsmy4jkytvgXipySR2RQAnYfW',
-                center:[104.114129,37.550339],
-                zoom:5,//缩放比
-                roam:false,//是否允许交互
-                //百度地图样式配置
-                mapStyle: {
-                    styleJson: [{
-                    'featureType': 'water',
-                    'elementType': 'all',
-                    'stylers': {
-                        'color': '#d1d1d1'
-                    }
-                    }, {
-                    'featureType': 'land',
-                    'elementType': 'all',
-                    'stylers': {
-                        'color': '#f3f3f3'
-                    }
-                    }, {
-                    'featureType': 'railway',
-                    'elementType': 'all',
-                    'stylers': {
-                        'visibility': 'off'
-                    }
-                    }, {
-                    'featureType': 'highway',
-                    'elementType': 'all',
-                    'stylers': {
-                        'color': '#fdfdfd'
-                    }
-                    }, {
-                    'featureType': 'highway',
-                    'elementType': 'labels',
-                    'stylers': {
-                        'visibility': 'off'
-                    }
-                    }, {
-                    'featureType': 'arterial',
-                    'elementType': 'geometry',
-                    'stylers': {
-                        'color': '#fefefe'
-                    }
-                    }, {
-                    'featureType': 'arterial',
-                    'elementType': 'geometry.fill',
-                    'stylers': {
-                        'color': '#fefefe'
-                    }
-                    }, {
-                    'featureType': 'poi',
-                    'elementType': 'all',
-                    'stylers': {
-                        'visibility': 'off'
-                    }
-                    }, {
-                    'featureType': 'green',
-                    'elementType': 'all',
-                    'stylers': {
-                        'visibility': 'off'
-                    }
-                    }, {
-                    'featureType': 'subway',
-                    'elementType': 'all',
-                    'stylers': {
-                        'visibility': 'off'
-                    }
-                    }, {
-                    'featureType': 'manmade',
-                    'elementType': 'all',
-                    'stylers': {
-                        'color': '#d1d1d1'
-                    }
-                    }, {
-                    'featureType': 'local',
-                    'elementType': 'all',
-                    'stylers': {
-                        'color': '#d1d1d1'
-                    }
-                    }, {
-                    'featureType': 'arterial',
-                    'elementType': 'labels',
-                    'stylers': {
-                        'visibility': 'off'
-                    }
-                    }, {
-                    'featureType': 'boundary',
-                    'elementType': 'all',
-                    'stylers': {
-                        'color': '#fefefe'
-                    }
-                    }, {
-                    'featureType': 'building',
-                    'elementType': 'all',
-                    'stylers': {
-                        'color': '#d1d1d1'
-                    }
-                    }, {
-                    'featureType': 'label',
-                    'elementType': 'labels.text.fill',
-                    'stylers': {
-                        'color': '#999999'
-                    }
-                    }]}
-            },
-            tooltip:{},//显示交互数据
-            //数据部分
-            series:[
+            chartSeries:[
                 {
                 name:'销售额',
                 type:'scatter',
@@ -558,49 +557,11 @@ export default {
                     }
                 }
             },
-            {
-                name:'TOp 2',
-                type:'effectScatter',
-                coordinateSystem:'bmap',
-                data:converData(data.sort(function(a,b){
-                    return b.value - a.value
-                })).slice(0,10),
-                //点的大小
-                symbolSize:function(v){
-                    return v[2] /8
-                },
-                encode:{
-                    value:2
-                },
-                label:{
-                show:false,//默认会不会显示
-                //位置显示
-                position:'right',
-                formatter:function(v){
-                    return `${v.name} - ${v.value[2]}`
-                     }
-                 },
-                 //鼠标划入动画
-                 hoverAnimation:true,
-                  //波纹样式修改
-                rippleEffect:{
-                    brushType:'stroke'
-                    },
-                itemStyle:{
-                    color:'purple',
-                    //增加阴影
-                    shadowBlur:10,
-                    shadowColor:'#333'
-                }
-                },
-               
-            ],
-           
-           
+            ]
         }
     }
-} 
+};
 </script>
-<style lang="scss">
 
+<style>
 </style>
