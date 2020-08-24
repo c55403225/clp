@@ -11,7 +11,9 @@
                 <div class="title">用户月同比增长</div>
               </template>
               <template>
-                <div class="chart-weapper">11111111111</div>
+                <div class="chart-weapper">
+                  <LiquidFill />
+                </div>
               </template>
           </el-card>
           <el-card shadow='hover'>
@@ -19,7 +21,9 @@
                 <div class="title">热门搜索</div>
               </template>
               <template>
-                <div class="chart-weapper">11111111111</div>
+                <div class="chart-weapper">
+                  <wordCard />
+                </div>
               </template>
           </el-card>
         </template>
@@ -29,9 +33,13 @@
 
 <script>
 import BMapScatter from '../BMapScatter/index'
+import LiquidFill from '../LiquidFill/index'
+import wordCard from '../wordCard/index'
 export default {
   components:{
-    BMapScatter
+    BMapScatter,
+    LiquidFill,
+    wordCard
   }
 };
 </script>

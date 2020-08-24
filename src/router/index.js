@@ -23,11 +23,7 @@ Vue.use(VueRouter)
     name: 'BMap2',
     component: BMap2
   },
-  {
-    path: '/LiquidFill',
-    name: 'LiquidFill',
-    component: LiquidFill
-  }
+ 
 ]
 
 
